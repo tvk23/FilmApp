@@ -42,3 +42,16 @@
         border: 2px solid rgba(red, green, blue, alpha);
         border-radius: 40px;
     }
+
+    .intput-box input: :placeholder {
+        color: fff;
+    }
+
+    .intput-box i {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
