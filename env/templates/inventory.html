@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('projects') }}">Projects</a>
+                <a href="{{ url_for('planner') }}">Planner</a>
+                <a href="{{ url_for('inventory') }}" class="active">Inventory</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Inventory</h1>
+            </header>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class="flashes">
+                  {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <section class="inventory-section">
+                <h2>Add New Item</h2>
+                <form method="POST" class="project-form">
+                    <input type="hidden" name="add_item" value="1">
+                    <label for="item_name">Item Name:</label>
+                    <input type="text" id="item_name" name="item_name" required>
+                    <label for="item_price">Price:</label>
+                    <input type="number" id="item_price" name="item_price" step="0.01" min="0" required>
+                    <button type="submit" class="submit-btn">Add Item</button>
+                </form>
+            </section>
+            <section class="inventory-list">
+                <h2>Current Inventory</h2>
+                {% if inventory and inventory|length > 0 %}
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in inventory %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>${{ '%.2f'|format(item.price) }}</td>
+                            <td>${{ '%.2f'|format(item.price * item.quantity) }}</td>
+                            <td>
+                                <form method="POST" style="display:inline">
+                                    <input type="hidden" name="inc_item" value="{{ item.id }}">
+                                    <button type="submit" class="submit-btn" title="Increase Quantity">+</button>
+                                </form>
+                                <form method="POST" style="display:inline">
+                                    <input type="hidden" name="delete_item" value="{{ item.id }}">
+                                    <button type="submit" class="delete-btn" onclick="return confirm('Delete item {{ item.name }}?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="total-inventory-value">
+                    <strong>Total Inventory Value:</strong> ${{ '%.2f'|format(total_value) }}
+                </div>
+                {% else %}
+                  <p class="no-projects">No items in inventory.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

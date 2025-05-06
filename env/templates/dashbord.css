@@ -1,0 +1,278 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f7f9;
+}
+
+.container {
+    display: flex;
+    width:90%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow:hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.sidebar nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar nav a {
+    color: #ddd;
+    text-decoration: none;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: #555;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f4f7f9;
+}
+
+.main-content header {
+    margin-bottom: 2rem;
+}
+
+.main-content h1 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    color: #333;
+}
+
+.main-content p {
+    color: #666;
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 110px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    color: #333;
+}
+
+.card p {
+    color: #666;
+    font-size: 1.5rem;
+}
+
+.content-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.activity-feed {
+    background-color: #fff;
+    padding: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity-feed p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: .8rem;
+}
+
+.logout {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.logout:hover {
+    color: #125ea8;
+}
+
+.delete-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4em 0.8em;
+    font-size: 0.95em;
+    margin-left: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+}
+
+.submit-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4em 0.8em;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #218838;
+}
+
+.project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-form input {
+    padding: 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/*.project-form button {
+    padding: 0.4em;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.project-form button:hover {
+    background: #218838;
+}
+*/
+
+.project-list {
+    margin-top: 2rem;
+}
+
+.projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: #f4f7f9;
+    border-radius: 4px;
+}
+
+.project-title {
+    font-weight: bold;
+}
+
+.project-meta {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.no-projects {
+    color: #666;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.planner-section {
+    margin-top: 2rem;
+}
+
+.planner-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    color: #333;
+}
+
+.planner-section p {
+    color: #666;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.inventory-list {
+    margin-top: 2rem;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.inventory-table th {
+    background-color: #f4f7f9;
+}
+
+.inventory-table tr:hover {
+    background-color: #f4f7f9;
+}
+
+.inventory-table td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

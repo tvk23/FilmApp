@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+            <aside class="sidebar">
+                <h2>Menu</h2>
+                <nav>
+                    <a href="{{ url_for('projects') }}">Projects</a>
+                    <a href="{{ url_for('planner') }}">Planner</a>
+                    <a href="{{ url_for('inventory') }}">Inventory</a>
+                    <a href="{{ url_for('contact') }}">Contact Us!</a>
+                </nav>
+            </aside>
+        <main class="main-content">
+            <header>
+                <h1>Welcome, {{ username }}!</h1>
+                <p>This is your dashboard!</p>
+            </header>
+            <section class="stats-cards">
+                <div class="card">
+                    <h2>Current Projects</h2>
+                    <p>8</p>
+                </div>
+                <div class="card">
+                    <h2>Total Projects</h2>
+                    <p>12</p>
+                </div>
+            </section>
+            <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,121 +1,90 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
-
-*   {
-        margin: 0;
-        padding: 0;
-        box-sizing: 0;
-        font-family: "Caveat", cursive;
-    }
-
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: url('https://online.pace.edu/wp-content/themes/pace-online/images/social/pace-badge.jpg') no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .wrapper {
-        width: 420px;
-        background: transparent;
-        border: 2px solid rgba(255, 255, 255, .2);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        color: #fff;
-        border-radius: 10px;
-        padding: 30px 40px;
-    }
-
-    .wrapper h1 {
-        font-size: 36px;
-        text-align: center;
-    }
-
-    .wrapper .intput-box {
-        width: 100%;
-        height: 50px;
-        background: salmon;
-        margin: 30px 0;
-    }
-
-    .intput-box input {
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        border: 2px solid rgba(red, green, blue, alpha);
-        border-radius: 40px;
-        font-size: 16px;
-        color: #fff;
-        padding: 20px 45px 20px 20px;
-    }
-
-    .intput-box input :placeholder {
-        color: fff;
-    }
-
-    .intput-box i {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 20px;
-    }
-
-    .wrapper .remember-forgot {
-        display: flex;
-        justify-content: space-between;
-        font-size: 14.5px;
-        margin: -15px 0 15px;
-    }
-
-    .remember-forgot label input {
-        accent-color: #fff;
-        margin-right: 3px;
-    }
-
-    .remember-forgot a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .remember-forgot a:hover {
-        text-decoration: underline;
-    }
-
-    .wrapper .btn {
-        width: 100%;
-        height: 45px;
-        background: #fff;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-    }
-
-    .wrapper .registerlink {
-        font-size: 14.5px;
-        text-align: center;
-        margin: 20px 0 15px;
-    }
-
-    .registerlink p a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-    }
-
-    .registerlink p a:hover {
-        text-decoration: underline;
-    }
-
-
-
-
+body {
+    background: url("https://www.ncaa.com/sites/default/files/images/logos/schools/bgl/pace.svg");
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: 30%;
+    background-position: bottom -440px right 650px;
+    background-repeat: no-repeat;
+}
+.container {
+    max-width: 350px;
+    margin: 80px auto;
+    background: transparent;
+    padding: 2em 2.5em 2em 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    text-align: center;
+}
+h2 {
+    margin-bottom: 1em;
+    color: #333;
+}
+label {
+    display: block;
+    margin: 1em 0 0.5em 0;
+    color: #444;
+    font-size: 1em;
+    text-align: left;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 1em;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 0.8em;
+    background: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover {
+    background: #333f4b;
+}
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0 0.5em 0;
+}
+.flashes li {
+    padding: 0.5em 1em;
+    margin-bottom: 0.5em;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+.flashes .success {
+    background: #d4edda;
+    color: #155724;
+}
+.flashes .danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+.flashes .warning {
+    background: #fff3cd;
+    color: #856404;
+}
+.flashes .info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+a.logout {
+    display: inline-block;
+    margin-top: 1em;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+a.logout:hover {
+    color: #125ea8;
+}

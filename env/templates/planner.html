@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('projects') }}">Projects</a>
+                <a href="{{ url_for('planner') }}" class="active">Planner</a>
+                <a href="{{ url_for('inventory') }}">Inventory</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Planner</h1>
+            </header>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class="flashes">
+                  {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <section class="calendar-section">
+                <h2>Add Event</h2>
+                <form method="POST" class="event-form">
+                    <label for="title">Event Title:</label>
+                    <input type="text" id="title" name="title" required>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit" class="submit-btn">Add Event</button>
+                </form>
+            </section>
+            <section class="event-list">
+                <h2>Events</h2>
+                {% if events and events|length > 0 %}
+                <ul class="projects">
+                  {% for event in events %}
+                    <li class="project-item">
+                      <span class="project-title">{{ event.title }}</span>
+                      <span class="project-meta">{{ event.date }}</span>
+                      <form method="POST" style="display:inline">
+                        <input type="hidden" name="delete_event" value="{{ event.id }}">
+                        <button type="submit" class="delete-btn" onclick="return confirm('Delete event {{ event.title }}?')">Delete</button>
+                      </form>
+                    </li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                  <p class="no-projects">No events yet.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

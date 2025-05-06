@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <nav>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('projects') }}" class="active">Projects</a>
+                <a href="{{ url_for('planner') }}">Planner</a>
+                <a href="{{ url_for('inventory') }}">Inventory</a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Projects</h1>
+            </header>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class="flashes">
+                  {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <section class="new-project-form">
+                <h2>Start a New Project</h2>
+                <form method="POST" class="project-form">
+                    <label for="project_name">Project Name:</label>
+                    <input type="text" id="project_name" name="project_name" required>
+                    <button type="submit" class="submit-btn">Create Project</button>
+                </form>
+            </section>
+            <section class="project-list">
+                <h2>Former Projects</h2>
+                {% if projects and projects|length > 0 %}
+                <ul class="projects">
+                  {% for project in projects %}
+                    <li class="project-item">
+                      <span class="project-title">{{ project.name }}</span>
+                      <span class="project-meta">Created by {{ project.created_by }}</span>
+                      <form method="POST" style="display:inline">
+                        <input type="hidden" name="delete" value="{{ loop.index0 }}">
+                        <button type="submit" class="delete-btn" onclick="return confirm('Delete project {{ project.name }}?')">Delete</button>
+                      </form>
+                    </li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                  <p class="no-projects">No projects yet.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>
